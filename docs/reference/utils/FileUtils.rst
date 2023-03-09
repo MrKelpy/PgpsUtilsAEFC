@@ -47,18 +47,6 @@ Method Implementations
 
 .. code-block:: cs
 
-	public static List<string> ReadFromFile(string path)
-	
-| Reads all the lines from a file and returns them in the form of a list.
-
-:parameters:	* <string> path - The filepath to dump the data into.
-				
-:returns: <List<string>> A list containing all the lines in the file
-
----------
-
-.. code-block:: cs
-
 	public static void DumpToFileBinary(string path, List<string> data)
 	
 | Writes all the given data in bulk, as binary information, into the specified filepath.
