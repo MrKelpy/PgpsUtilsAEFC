@@ -5,8 +5,11 @@ PgpsUtilsAEFC: Documentation
 
 .. toctree::
 	:maxdepth: 4
-	:caption: Starting Out
+	:caption: Usage
 	:hidden:
+	
+	usage/installation
+	usage/examples
 	
 .. toctree::
 	:maxdepth: 4
