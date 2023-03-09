@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>MrKelpy.PgpsUtilsAEFC</id>
+    <version>1.0.0</version>
+    <title>PgpsUtilsAEFC</title>
+    <authors>Alexandre Silva</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>icon.png</icon>
+	<readme>README.md</readme>
+    <projectUrl>https://github.com/MrKelpy/PgpsUtilsAEFC</projectUrl>
+    <description>Helper library for the 2022-2025 PGPS2 class from AEFC</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright ©2023 Alexandre Silva</copyright>
+    <tags>utility school forms general</tags>
+  </metadata>
+  <files>
+	<file src="README.md" target=""/>
+    <file src="icon.png" target="" />
+  </files>
+</package>
