@@ -15,7 +15,7 @@ namespace PgpsUtilsAEFC.internals.caches
         /// The instance used to access the class, since it is a singleton.
         /// </summary>
         public static OriginalParentCache INSTANCE = new OriginalParentCache();
-
+    
         /// <summary>
         /// The cache containing the original parents of every control.
         /// </summary>

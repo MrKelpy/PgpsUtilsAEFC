@@ -47,6 +47,7 @@ namespace PgpsUtilsAEFC.utils
         /// all the values as strings.
         /// </summary>
         /// <param name="path">The filepath to read the data from</param>
+        /// <returns>The primitive values in a list of strings</returns>
         public static List<string> ReadFromFileBinary(string path)
         {
             List<string> values = new List<string>();

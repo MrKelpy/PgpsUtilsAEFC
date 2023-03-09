@@ -14,7 +14,7 @@ namespace PgpsUtilsAEFC.forms.extensions
         /// the current panel.
         /// </summary>
         /// <param name="self">The panel the method is being called from</param>
-        /// <param name="targetPanel">The panel to clone the contents of</param>
+        /// <param name="targetPanel">The panel to add the contents of</param>
         public static void AddAllFrom(this Panel self, Panel targetPanel)
         {
             // Loop through the controls in the target panel and add them to the current panel
