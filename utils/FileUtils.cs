@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace PgpsUtilsAEFC.utils
 {
+
     /// <summary>
     /// This class provides a wide variety of methods for quick and easy writing/reading from files.
     /// </summary>
