@@ -1,7 +1,7 @@
 FileUtils
 =========
 | ``public static utils.FileUtils``
-| 	This singleton internal class implements a cache that stores every control's original parent, so that the dynamic loading/unloading of active components can be managed smoothly.
+| 	This class provides a wide variety of methods for quick and easy writing/reading from files.
 
 ---------
 

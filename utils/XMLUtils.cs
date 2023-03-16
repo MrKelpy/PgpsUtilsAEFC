@@ -70,7 +70,7 @@ namespace PgpsUtilsAEFC.utils
         }
 
         /// <summary>
-        /// Deserializes the file into a string.
+        /// Deserializes the string into an object.
         /// </summary>
         /// <typeparam name="T">The type to deserialize the string into</typeparam>
         /// <param name="str">The string to deserialize</param>
