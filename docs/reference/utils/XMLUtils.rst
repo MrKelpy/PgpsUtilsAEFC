@@ -1,7 +1,7 @@
 XMLUtils
 =========
 | ``public static utils.XMLUtils``
-| 	This class extends the functionality of the StringWriter class, defining its encoding in utf-8.
+| 	This class offers a multitude of useful XML methods that make serializing, creating and reading XML easier.
 
 ---------
 
