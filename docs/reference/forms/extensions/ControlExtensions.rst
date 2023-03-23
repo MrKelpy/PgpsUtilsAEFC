@@ -13,18 +13,6 @@ Method Implementations
 
 .. code-block:: cs
 
-	public static string GetUUID(this Control control)
-	
-| Returns an unique identifier for the control, recursively building the path to the control based on the parents.
-
-:parameter: 	<Control> control - The control to return the identifier for.
-
-:returns: <string> The Control's UUID
-
----------
-
-.. code-block:: cs
-
 	public static void SendToOriginal(this Control self)
 	
 | Searches for the original parent of the control inside OriginalParentCache, and sets the control's parent back to it.

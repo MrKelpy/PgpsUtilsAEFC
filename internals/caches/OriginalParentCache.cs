@@ -23,7 +23,7 @@ namespace PgpsUtilsAEFC.internals.caches
         private OriginalParentCache() { }
 
         /// <summary>
-        /// Adds the specified control to the cache, in the form of an uuid:parent mapping.
+        /// Adds the specified control to the cache, in the form of a name:parent mapping.
         /// </summary>
         /// <param name="control">The control to add to the cache.</param>
         /// <returns>Whether or not the control was successfully added to cache.</returns>
@@ -31,24 +31,24 @@ namespace PgpsUtilsAEFC.internals.caches
         {
             // There can only be one registry in the cache for each control, so if it already exists,
             // return false.
-            if (this.Contains(control.GetUUID())) return false;
+            if (this.Contains(control.Name)) return false;
 
-            this.cache.Add(control.GetUUID(), control.Parent);
+            this.cache.Add(control.Name, control.Parent);
             return true;
         }
 
         /// <summary>
         /// Returns the parent of the specified control, as it was before it was added to the cache.
         /// </summary>
-        /// <param name="uuid">The UUID of the control to look for in the cache</param>
-        /// <returns>The cached original parent for the specified UUID</returns>
-        internal Control GetParentOf(string uuid) => this.cache.ContainsKey(uuid) ? this.cache[uuid] : null;
+        /// <param name="name">The name of the control to look for in the cache</param>
+        /// <returns>The cached original parent for the specified name</returns>
+        internal Control GetParentOf(string name) => this.cache.ContainsKey(name) ? this.cache[name] : null;
 
         /// <summary>
         /// Checks if the specified control is cached.
         /// </summary>
-        /// <param name="uuid">The UUID to check for in the cache.</param>
+        /// <param name="name">The control name to check for in the cache.</param>
         /// <returns>Whether the control exists in the cache or not.</returns>
-        internal bool Contains(string uuid) => this.cache.ContainsKey(uuid);
+        internal bool Contains(string name) => this.cache.ContainsKey(name);
     }
 }

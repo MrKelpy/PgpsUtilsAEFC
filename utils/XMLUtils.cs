@@ -23,7 +23,7 @@ namespace PgpsUtilsAEFC.utils
     /// reading XML easier.
     /// <remarks>The type parameters used in this class need to be of a Serializable.</remarks>
     /// </summary>
-    public class XMLUtils
+    public static class XMLUtils
     {
 
         /// <summary>
