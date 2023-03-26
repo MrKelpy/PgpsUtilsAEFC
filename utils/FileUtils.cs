@@ -27,7 +27,7 @@ namespace PgpsUtilsAEFC.utils
                 EnsurePath(path, Path.HasExtension(path) ? FileAttributes.Normal : FileAttributes.Directory);
 
             // Ensures that the only two path types are file and directory.
-            if (pathType != FileAttributes.Directory && pathType != FileAttributes.Normal)
+            if (pathType != FileAttributes.Directory && pathType != FileAttributes.Normal && pathType != FileAttributes.NotContentIndexed)
                 throw new ArgumentException($"Invalid pathType parameter. Expected either {FileAttributes.Directory} or {FileAttributes.Normal}, provided {pathType}");
 
             // Creates the directory if it doesn't exist, and if the path is a directory

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace PgpsUtilsAEFC.common.abstraction
 {
-    /// <summary>
+    /// <summary>   
     /// This abstract class implements every method that is used by both the FileManager and Section classes,
     /// due to a similarity in functionality.
     /// </summary>
@@ -29,7 +29,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         public void AddSection(string section)
         {
             string sectionPath = Path.Combine(OperationsTargetPath, section);
-            if (!File.Exists(sectionPath)) Directory.CreateDirectory(sectionPath);
+            if (!Directory.Exists(sectionPath)) Directory.CreateDirectory(sectionPath);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         public void RemoveSection(string section)
         {
             string sectionPath = Path.Combine(OperationsTargetPath, section);
-            if (File.Exists(sectionPath)) Directory.Delete(sectionPath, true);
+            if (Directory.Exists(sectionPath)) Directory.Delete(sectionPath, true);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// Iterates over all the files stemming from the relative root and returns every name matched file.
         /// </summary>
         /// <param name="filename">The filename to match with</param>
-        /// <returns>A string[] with all the files that matched</returns>
+        /// <returns>A string[] with all the files that matched the filename</returns>
         public string[] GetFilesNamed(string filename) =>
             this.GetAllFiles().ToList().Where(x => x == filename).ToArray();
 

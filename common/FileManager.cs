@@ -10,16 +10,17 @@ namespace PgpsUtilsAEFC.common
     /// <summary>
     /// This class implements an interface to interact with a program's file structure
     /// in a more convenient way.
-    /// <remarks>
-    /// This class should probably be implemented making use of either dependency injection or singletons.
-    /// </remarks>
     /// </summary>
     public class FileManager : AbstractBaseOperations
     {
-        private string RootPath { get; set; }
-
         /// <summary>
-        /// Main constructor for the FileManager class. Sets the root path.
+        /// The root path of the file system.
+        /// </summary>
+        private string RootPath { get; set; }
+    
+        /// <summary>
+        /// Main constructor for the FileManager class. Sets the root path to the specified value.
+        /// If not specified, use the AppData/.PROGRAM-NAME folder.
         /// </summary>
         /// <param name="root">The path to the root directory of the file system.</param>
         public FileManager(string root = null) : base(root)

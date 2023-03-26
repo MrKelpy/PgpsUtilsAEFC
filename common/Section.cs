@@ -29,14 +29,5 @@ namespace PgpsUtilsAEFC.common
             this.SectionFullPath = sectionPath;
             this.Name = Path.GetDirectoryName(sectionPath);
         }
-
-        /// <summary>
-        /// Remove the current section from the file system, and invalidates the current class.
-        /// </summary>
-        public void Delete()
-        {
-            Directory.Delete(this.SectionFullPath, true);
-            this.SectionFullPath = this.Name = null;
-        }
     }
 }

@@ -19,3 +19,4 @@ PgpsUtilsAEFC: Documentation
 	reference/forms/index
 	reference/internals/index
 	reference/utils/index
+	reference/common/index
