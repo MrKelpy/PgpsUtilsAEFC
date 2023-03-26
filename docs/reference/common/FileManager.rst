@@ -1,6 +1,6 @@
 FileManager
 ===========
-| ´´public class common.FileManager : AbstractBaseOperations``
+| ``public class common.FileManager : AbstractBaseOperations``
 |	This class implements an interface to interact with a program's file structure in a more convenient way.
 
 .. note::
