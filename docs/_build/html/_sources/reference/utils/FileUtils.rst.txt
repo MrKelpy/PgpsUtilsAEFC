@@ -1,7 +1,7 @@
 FileUtils
 =========
 | ``public static utils.FileUtils``
-| 	This singleton internal class implements a cache that stores every control's original parent, so that the dynamic loading/unloading of active components can be managed smoothly.
+| 	This class provides a wide variety of methods for quick and easy writing/reading from files.
 
 ---------
 
@@ -9,6 +9,18 @@ Method Implementations
 ~~~~~~~~~~~~~~~~~~~~~~
 .. 
 
+
+---------
+
+.. code-block:: cs
+
+	public static void EnsurePath(string path, FileAttributes pathType = FileAttributes.NotContentIndexed)
+	
+| Ensures the existence of the given path, be it a directory or a file.
+
+:parameters:	* <string> path - The filepath to dump the data into.
+				* <FileAttributes> pathType - Whether the path is a file or directory. If not specified, it will be automatically determined. This parameter accepts either a FileAttributes.Directory or FileAttributes.Normal type.
+				
 ---------
 
 .. code-block:: cs
@@ -31,18 +43,6 @@ Method Implementations
 :parameters:	* <string> path - The filepath to dump the data into.
 				* <string> data - A string containing the line to write into the file.
 				
----------
-
-.. code-block:: cs
-
-	public static List<string> ReadFromFile(string path)
-	
-| Reads all the lines from a file and returns them in the form of a list.
-
-:parameters:	* <string> path - The filepath to dump the data into.
-				
-:returns: <List<string>> A list containing all the lines in the file
-
 ---------
 
 .. code-block:: cs

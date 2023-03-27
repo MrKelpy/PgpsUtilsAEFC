@@ -36,7 +36,7 @@ Method Implementations
 
 	internal bool AddToCache(Control control)
 	
-| Adds the specified control to the cache, in the form of an uuid:parent mapping.
+| Adds the specified control to the cache, in the form of a name:parent mapping.
 
 :parameters:	* <Control> control - The control to add to the cache.
 :returns: <bool> Whether or not the control was successfully added to cache.
@@ -45,20 +45,20 @@ Method Implementations
 
 .. code-block:: cs
 
-	internal Control GetParentOf(string uuid)
+	internal Control GetParentOf(string name)
 	
 | Returns the parent of the specified control, as it was before it was added to the cache.
 
-:parameters:	* <string> uuid - The UUID of the control to look for in the cache.
-:returns: <Control> The cached original parent for the specified UUID.
+:parameters:	* <string> name - The name of the control to look for in the cache.
+:returns: <Control> The cached original parent for the specified name.
 
 ---------
 
 .. code-block:: cs
 
-	internal bool Contains(string uuid)
+	internal bool Contains(string name)
 	
 | Checks if the specified control is cached.
 
-:parameters:	* <string> uuid - The UUID of the control to look for in the cache.
+:parameters:	* <string> name - The name of the control to look for in the cache.
 :returns: <bool> Whether the control exists in the cache or not.

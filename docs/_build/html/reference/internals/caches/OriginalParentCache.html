@@ -58,6 +58,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../utils/index.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../common/index.html">Common</a></li>
 </ul>
 
         </div>
@@ -125,7 +126,7 @@
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">Adds the specified control to the cache, in the form of an <a class="reference external" href="uuid:parent">uuid:parent</a> mapping.</div>
+<div class="line">Adds the specified control to the cache, in the form of a name:parent mapping.</div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">parameters<span class="colon">:</span></dt>
@@ -138,7 +139,7 @@
 </dd>
 </dl>
 <hr class="docutils" />
-<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">internal</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="nf">GetParentOf</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">uuid</span><span class="p">)</span>
+<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">internal</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="nf">GetParentOf</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -147,15 +148,15 @@
 <dl class="field-list simple">
 <dt class="field-odd">parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p>&lt;string&gt; uuid - The UUID of the control to look for in the cache.</p></li>
+<li><p>&lt;string&gt; name - The name of the control to look for in the cache.</p></li>
 </ul>
 </dd>
 <dt class="field-even">returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>&lt;Control&gt; The cached original parent for the specified UUID.</p>
+<dd class="field-even"><p>&lt;Control&gt; The cached original parent for the specified name.</p>
 </dd>
 </dl>
 <hr class="docutils" />
-<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">internal</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Contains</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">uuid</span><span class="p">)</span>
+<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">internal</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Contains</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -164,7 +165,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p>&lt;string&gt; uuid - The UUID of the control to look for in the cache.</p></li>
+<li><p>&lt;string&gt; name - The name of the control to look for in the cache.</p></li>
 </ul>
 </dd>
 <dt class="field-even">returns<span class="colon">:</span></dt>

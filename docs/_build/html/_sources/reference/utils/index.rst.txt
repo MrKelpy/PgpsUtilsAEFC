@@ -6,3 +6,4 @@ This module contains utilitary methods that allow end users to perform tedious t
 	:maxdepth: 4
 	
 	FileUtils
+	XMLUtils

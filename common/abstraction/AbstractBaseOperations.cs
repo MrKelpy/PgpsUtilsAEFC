@@ -26,10 +26,12 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// Adds a new section (Directory) into the file system.
         /// </summary>
         /// <param name="section">The relative path of the section, relative to the root.</param>
-        public void AddSection(string section)
+        /// <returns>The section that was just added</returns>
+        public Section AddSection(string section)
         {
             string sectionPath = Path.Combine(OperationsTargetPath, section);
             if (!Directory.Exists(sectionPath)) Directory.CreateDirectory(sectionPath);
+            return this.GetSectionFromPath(section);
         }
 
         /// <summary>
@@ -85,8 +87,13 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// Adds a document into the current Section.
         /// </summary>
         /// <param name="documentName">The name of the document to add into the section</param>
-        public void AddDocument(string documentName) => 
-            File.Create(Path.Combine(OperationsTargetPath, documentName));
+        /// <returns>The path of the document that was just added</returns>
+        public string AddDocument(string documentName)
+        {
+            string filepath = Path.Combine(OperationsTargetPath, documentName);
+            File.Create(filepath);
+            return filepath;
+        }
 
         /// <summary>
         /// Deletes a document from within a section, based on its relative path.

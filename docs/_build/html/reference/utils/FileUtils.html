@@ -18,6 +18,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="XMLUtils" href="XMLUtils.html" />
     <link rel="prev" title="Utils" href="index.html" /> 
 </head>
 
@@ -54,8 +55,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#method-implementations">Method Implementations</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="XMLUtils.html">XMLUtils</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../common/index.html">Common</a></li>
 </ul>
 
         </div>
@@ -88,12 +91,27 @@
 <div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">static</span> <span class="pre">utils.FileUtils</span></code></div>
 <div class="line-block">
-<div class="line">This singleton internal class implements a cache that stores every control’s original parent, so that the dynamic loading/unloading of active components can be managed smoothly.</div>
+<div class="line">This class provides a wide variety of methods for quick and easy writing/reading from files.</div>
 </div>
 </div>
 <hr class="docutils" />
 <section id="method-implementations">
 <h2>Method Implementations<a class="headerlink" href="#method-implementations" title="Permalink to this heading"></a></h2>
+<hr class="docutils" />
+<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EnsurePath</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">FileAttributes</span><span class="w"> </span><span class="n">pathType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileAttributes</span><span class="p">.</span><span class="n">NotContentIndexed</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Ensures the existence of the given path, be it a directory or a file.</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>&lt;string&gt; path - The filepath to dump the data into.</p></li>
+<li><p>&lt;FileAttributes&gt; pathType - Whether the path is a file or directory. If not specified, it will be automatically determined. This parameter accepts either a FileAttributes.Directory or FileAttributes.Normal type.</p></li>
+</ul>
+</dd>
+</dl>
 <hr class="docutils" />
 <div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DumpToFile</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -122,23 +140,6 @@
 <li><p>&lt;string&gt; path - The filepath to dump the data into.</p></li>
 <li><p>&lt;string&gt; data - A string containing the line to write into the file.</p></li>
 </ul>
-</dd>
-</dl>
-<hr class="docutils" />
-<div class="highlight-cs notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ReadFromFile</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line">Reads all the lines from a file and returns them in the form of a list.</div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p>&lt;string&gt; path - The filepath to dump the data into.</p></li>
-</ul>
-</dd>
-<dt class="field-even">returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>&lt;List&lt;string&gt;&gt; A list containing all the lines in the file</p>
 </dd>
 </dl>
 <hr class="docutils" />
@@ -198,6 +199,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="XMLUtils.html" class="btn btn-neutral float-right" title="XMLUtils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
