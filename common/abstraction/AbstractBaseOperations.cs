@@ -30,7 +30,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         public Section AddSection(string section)
         {
             string sectionPath = Path.Combine(OperationsTargetPath, section);
-            if (!Directory.Exists(sectionPath)) Directory.CreateDirectory(sectionPath);
+            FileUtils.EnsurePath(section, FileAttributes.Device);
             return this.GetSectionFromPath(section);
         }
 
@@ -84,14 +84,14 @@ namespace PgpsUtilsAEFC.common.abstraction
         }
 
         /// <summary>
-        /// Adds a document into the current Section.
+        /// Adds a document into the current Section if it doesn't exist.
         /// </summary>
         /// <param name="documentName">The name of the document to add into the section</param>
         /// <returns>The path of the document that was just added</returns>
         public string AddDocument(string documentName)
         {
             string filepath = Path.Combine(OperationsTargetPath, documentName);
-            File.Create(filepath);
+            FileUtils.EnsurePath(filepath, FileAttributes.Normal);
             return filepath;
         }
 
@@ -99,8 +99,11 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// Deletes a document from within a section, based on its relative path.
         /// </summary>
         /// <param name="documentName">The name of the document to remove from the section</param>
-        public void RemoveDocument(string documentName) =>
-            File.Delete(Path.Combine(OperationsTargetPath, documentName));
+        public void RemoveDocument(string documentName)
+        {
+            string path = Path.Combine(OperationsTargetPath, documentName);
+            if (File.Exists(path)) File.Delete(path);
+        }
 
         /// <summary>
         /// Iterates over every item stemming from the relative root used, filters out the files

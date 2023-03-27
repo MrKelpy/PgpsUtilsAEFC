@@ -101,7 +101,7 @@ Method Implementations
 
 	public string AddDocument(string documentName)
 	
-| Adds a document into the current Section.
+| Adds a document into the current Section if it doesn't exist.
 
 :parameters:	* <string> documentName - The name of the document to add into the section.
 
