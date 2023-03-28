@@ -1,6 +1,7 @@
 ﻿using PgpsUtilsAEFC.utils;
 using System.IO;
 using System.Linq;
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace PgpsUtilsAEFC.common.abstraction
 {
@@ -13,7 +14,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// <summary>
         /// The target path to perform these operations on. This will act as the "root" of all operations.
         /// </summary>
-        private string OperationsTargetPath { get; set; }
+        protected string OperationsTargetPath { get; set; }
 
         /// <summary>
         /// Main constructor for the AbstractBaseOperations class. Defines the
@@ -30,8 +31,8 @@ namespace PgpsUtilsAEFC.common.abstraction
         public Section AddSection(string section)
         {
             string sectionPath = Path.Combine(OperationsTargetPath, section);
-            FileUtils.EnsurePath(section, FileAttributes.Device);
-            return this.GetSectionFromPath(section);
+            FileUtils.EnsurePath(section, FileAttributes.Directory);
+            return new Section(sectionPath);
         }
 
         /// <summary>
@@ -50,8 +51,8 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// <returns>A Section[] containing the Section objects representing the directories.</returns>
         public Section[] GetAllSections()
         {
-            string[] allFiles = Directory.GetFiles(OperationsTargetPath, "*.*", SearchOption.AllDirectories);
-            return allFiles.ToList().Where(Directory.Exists).Select(x => new Section(x)).ToArray();
+            string[] allSections = Directory.GetDirectories(OperationsTargetPath, "*", SearchOption.AllDirectories);
+            return allSections.ToList().Select(x => new Section(x)).ToArray();
         }
 
         /// <summary>
@@ -70,18 +71,6 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// <returns>A Section object representing the directory in the file system.</returns>
         public Section GetFirstSectionNamed(string name) =>
             this.GetAllSections().ToList().FirstOrDefault(x => x.Name == name);
-
-        /// <summary>
-        /// Returns a section based on the relative path provided, relative to the root.
-        /// </summary>
-        /// <param name="path">The relative path to the section from the root</param>
-        /// <returns>The Section object</returns>
-        public Section GetSectionFromPath(string path)
-        {
-            string sectionPath = Path.Combine(OperationsTargetPath, path);
-            FileUtils.EnsurePath(sectionPath);
-            return new Section(path);
-        }
 
         /// <summary>
         /// Adds a document into the current Section if it doesn't exist.
@@ -110,19 +99,15 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// and returns an array with their full paths.
         /// </summary>
         /// <returns>A string[] containing every file stemming down from the root</returns>
-        public string[] GetAllFiles()
-        {
-            string[] allFiles = Directory.GetFiles(OperationsTargetPath, "*.*", SearchOption.AllDirectories);
-            return allFiles.ToList().Where(File.Exists).ToArray();
-        }
+        public string[] GetAllFiles() => Directory.GetFiles(OperationsTargetPath, "*.*", SearchOption.AllDirectories);
 
-        /// <summary>
+            /// <summary>
         /// Iterates over all the files stemming from the relative root and returns every name matched file.
         /// </summary>
         /// <param name="filename">The filename to match with</param>
         /// <returns>A string[] with all the files that matched the filename</returns>
         public string[] GetFilesNamed(string filename) =>
-            this.GetAllFiles().ToList().Where(x => x == filename).ToArray();
+            this.GetAllFiles().ToList().Where(x => Path.GetFileName(x).Equals(filename)).ToArray();
 
         /// <summary>
         /// Iterates over all the files stemming from the relative root and returns the first name matched file.
@@ -130,6 +115,6 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// <param name="filename">The filename to match with</param>
         /// <returns>A string containing the full path of the first matched file</returns>
         public string GetFirstFileNamed(string filename) =>
-            this.GetAllFiles().ToList().FirstOrDefault(x => x == filename);
+            this.GetAllFiles().ToList().FirstOrDefault(x => Path.GetFileName(x).Equals(filename));
     }
 }

@@ -87,18 +87,6 @@ Method Implementations
 
 .. code-block:: cs
 
-	public Section GetSectionFromPath(string path)
-	
-| Returns a section based on the relative path provided, relative to the root.
-
-:parameters:	* <string> path - The relative path to the section from the root
-
-:returns: <Section> The Section object.
-
----------
-
-.. code-block:: cs
-
 	public string AddDocument(string documentName)
 	
 | Adds a document into the current Section if it doesn't exist.

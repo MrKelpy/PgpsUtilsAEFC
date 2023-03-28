@@ -27,8 +27,8 @@ namespace PgpsUtilsAEFC.common
         {
             // If the root isn't specified, use the AppData/.PROGRAM-NAME folder.
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            RootPath = root ?? Path.Combine(appDataPath, $".{Assembly.GetCallingAssembly().GetName().Name}");
-            FileUtils.EnsurePath(RootPath);
+            RootPath = OperationsTargetPath = root ?? Path.Combine(appDataPath, $".{Assembly.GetCallingAssembly().GetName().Name}");
+            FileUtils.EnsurePath(RootPath, FileAttributes.Directory);
         }
     }
 }
