@@ -39,7 +39,7 @@ namespace PgpsUtilsAEFC.utils
 
             // Creates the file if it doesn't exist, and if the path is a file.
             if (pathType == FileAttributes.Normal && !File.Exists(path))
-                File.Create(path);
+                File.Create(path).Close();
         }
         
         /// <summary>
