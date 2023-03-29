@@ -31,7 +31,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         public Section AddSection(string section)
         {
             string sectionPath = Path.Combine(OperationsTargetPath, section);
-            FileUtils.EnsurePath(section, FileAttributes.Directory);
+            FileUtils.EnsurePath(sectionPath, FileAttributes.Directory);
             return new Section(sectionPath);
         }
 
