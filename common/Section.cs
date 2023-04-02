@@ -27,7 +27,7 @@ namespace PgpsUtilsAEFC.common
         internal Section(string sectionPath) : base(sectionPath)
         {
             this.SectionFullPath = sectionPath;
-            this.Name = Path.GetFileName(sectionPath);
+            this.Name = this.SectionFullPath.Substring(this.OperationsTargetPath.Length);
         }
     }
 }

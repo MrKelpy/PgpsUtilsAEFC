@@ -30,6 +30,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// <returns>The section that was just added</returns>
         public Section AddSection(string section)
         {
+            if (section == null) return null;
             string sectionPath = Path.Combine(OperationsTargetPath, section);
             FileUtils.EnsurePath(sectionPath, FileAttributes.Directory);
             return new Section(sectionPath);
@@ -41,6 +42,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// <param name="section">The relative path of the section, relative to the root.</param>
         public void RemoveSection(string section)
         {
+            if (section == null) return;
             string sectionPath = Path.Combine(OperationsTargetPath, section);
             if (Directory.Exists(sectionPath)) Directory.Delete(sectionPath, true);
         }
@@ -79,6 +81,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// <returns>The path of the document that was just added</returns>
         public string AddDocument(string documentName)
         {
+            if (documentName == null) return null;
             string filepath = Path.Combine(OperationsTargetPath, documentName);
             FileUtils.EnsurePath(filepath, FileAttributes.Normal);
             return filepath;
@@ -90,6 +93,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// <param name="documentName">The name of the document to remove from the section</param>
         public void RemoveDocument(string documentName)
         {
+            if (documentName == null) return;
             string path = Path.Combine(OperationsTargetPath, documentName);
             if (File.Exists(path)) File.Delete(path);
         }
