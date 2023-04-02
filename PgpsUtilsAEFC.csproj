@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PgpsUtilsAEFC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\MrKelpy.PgpsUtilsAEFC.1.1.8\lib\net472\PgpsUtilsAEFC.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -52,9 +49,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\FileUtils.cs" />
     <Compile Include="utils\XMLUtils.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

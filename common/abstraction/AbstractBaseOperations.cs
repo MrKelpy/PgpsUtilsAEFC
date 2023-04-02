@@ -33,7 +33,7 @@ namespace PgpsUtilsAEFC.common.abstraction
             if (section == null) return null;
             string sectionPath = Path.Combine(OperationsTargetPath, section);
             FileUtils.EnsurePath(sectionPath, FileAttributes.Directory);
-            return new Section(sectionPath);
+            return new Section(sectionPath, OperationsTargetPath);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         public Section[] GetAllSections()
         {
             string[] allSections = Directory.GetDirectories(OperationsTargetPath, "*", SearchOption.AllDirectories);
-            return allSections.ToList().Select(x => new Section(x)).ToArray();
+            return allSections.ToList().Select(x => new Section(x, OperationsTargetPath)).ToArray();
         }
 
         /// <summary>
