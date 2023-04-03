@@ -25,10 +25,10 @@ namespace PgpsUtilsAEFC.common
         /// </summary>
         /// <param name="sectionPath">The full path of the section.</param>
         /// <param name="root">The full path of the root</param>
-        internal Section(string sectionPath, string root) : base(root)
+        internal Section(string sectionPath, string root) : base(sectionPath)
         {
             this.SectionFullPath = sectionPath;
-            this.Name = this.SectionFullPath.Substring(this.OperationsTargetPath.Length);
+            this.Name = this.SectionFullPath.Substring(root.Length + 1);
         }
     }
 }
