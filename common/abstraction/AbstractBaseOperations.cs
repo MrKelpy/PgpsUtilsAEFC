@@ -56,6 +56,16 @@ namespace PgpsUtilsAEFC.common.abstraction
             string[] allSections = Directory.GetDirectories(OperationsTargetPath, "*", SearchOption.AllDirectories);
             return allSections.ToList().Select(x => new Section(x, OperationsTargetPath)).ToArray();
         }
+        
+        /// <summary>
+        /// Searches for every top level section in the file system, and returns an array containing them.
+        /// </summary>
+        /// <returns>A Section[] containing the Section objects representing the directories.</returns>
+        public Section[] GetAllTopLevelSections()
+        {
+            string[] allSections = Directory.GetDirectories(OperationsTargetPath);
+            return allSections.ToList().Select(x => new Section(x, OperationsTargetPath)).ToArray();
+        }
 
         /// <summary>
         /// Gets all the sections (Directories) in the file system, and returns the ones matching
@@ -99,11 +109,18 @@ namespace PgpsUtilsAEFC.common.abstraction
         }
 
         /// <summary>
-        /// Iterates over every item stemming from the relative root used, filters out the files
-        /// and returns an array with their full paths.
+        /// Iterates over every item stemming from the relative root used and
+        /// returns an array with their full paths.
         /// </summary>
         /// <returns>A string[] containing every file stemming down from the root</returns>
         public string[] GetAllFiles() => Directory.GetFiles(OperationsTargetPath, "*.*", SearchOption.AllDirectories);
+
+        /// <summary>
+        /// Iterates over every top level item in the operations target path and
+        /// returns an array with their full paths.
+        /// </summary>
+        /// <returns>A string[] containing every top level file at the target path</returns>
+        public string[] GetAllTopLevelFiles() => Directory.GetFiles(OperationsTargetPath);
 
             /// <summary>
         /// Iterates over all the files stemming from the relative root and returns every name matched file.

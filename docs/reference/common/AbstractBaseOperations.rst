@@ -63,6 +63,16 @@ Method Implementations
 
 .. code-block:: cs
 
+	public Section[] GetAllTopLevelSections()
+	
+| Searches for every top level section in the file system, and returns an array containing them.
+
+:returns: <Section[]> A Section[] containing the Section objects representing the directories.
+
+---------
+
+.. code-block:: cs
+
 	public Section[] GetSectionsNamed(string name)
 	
 | Gets all the sections (Directories) in the file system, and returns the ones matching the specified name.
@@ -115,6 +125,16 @@ Method Implementations
 | Iterates over every item stemming from the relative root used, filters out the files and returns an array with their full paths.
 
 :returns: <string[]> A string[] containing every file stemming down from the root.
+
+---------
+
+.. code-block:: cs
+
+	public string[] GetAllTopLevelFiles()
+	
+| Iterates over every top level item in the operations target path and returns an array with their full paths.
+
+:returns: <string[]> A string[] containing every top level file at the target path
 
 ---------
 
