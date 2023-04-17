@@ -62,6 +62,16 @@ namespace PgpsUtilsAEFC.common.abstraction
             string[] allSections = Directory.GetDirectories(OperationsTargetPath, "*", SearchOption.AllDirectories);
             return allSections.ToList().Select(x => new Section(x, RootPath)).ToArray();
         }
+        
+        /// <summary>
+        /// Searches for every top level section in the file system, and returns an array containing them.
+        /// </summary>
+        /// <returns>A Section[] containing the Section objects representing the directories.</returns>
+        public Section[] GetAllTopLevelSections()
+        {
+            string[] allSections = Directory.GetDirectories(OperationsTargetPath);
+            return allSections.ToList().Select(x => new Section(x, OperationsTargetPath)).ToArray();
+        }
 
         /// <summary>
         /// Gets all the sections (Directories) in the file system, and returns the ones matching
@@ -111,22 +121,29 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// and returns an array with their full paths.
         /// </summary>
         /// <returns>A string[] containing every file stemming down from the root</returns>
-        public string[] GetAllFiles() => Directory.GetFiles(OperationsTargetPath, "*.*", SearchOption.AllDirectories);
+        public string[] GetAllDocuments() => Directory.GetFiles(OperationsTargetPath, "*.*", SearchOption.AllDirectories);
 
-            /// <summary>
+        /// <summary>
+        /// Iterates over every top level item in the operations target path and
+        /// returns an array with their full paths.
+        /// </summary>
+        /// <returns>A string[] containing every top level file at the target path</returns>
+        public string[] GetAllTopLevelDocuments() => Directory.GetFiles(OperationsTargetPath);
+        
+        /// <summary>
         /// Iterates over all the files stemming from the relative root and returns every name matched file.
         /// </summary>
         /// <param name="filename">The filename to match with</param>
         /// <returns>A string[] with all the files that matched the filename</returns>
-        public string[] GetFilesNamed(string filename) =>
-            this.GetAllFiles().ToList().Where(x => Path.GetFileName(x).Equals(filename)).ToArray();
+        public string[] GetDocumentsNamed(string filename) =>
+            this.GetAllDocuments().ToList().Where(x => Path.GetFileName(x).Equals(filename)).ToArray();
 
         /// <summary>
         /// Iterates over all the files stemming from the relative root and returns the first name matched file.
         /// </summary>
         /// <param name="filename">The filename to match with</param>
         /// <returns>A string containing the full path of the first matched file</returns>
-        public string GetFirstFileNamed(string filename) =>
-            this.GetAllFiles().ToList().FirstOrDefault(x => Path.GetFileName(x).Equals(filename));
+        public string GetFirstDocumentNamed(string filename) =>
+            this.GetAllDocuments().ToList().FirstOrDefault(x => Path.GetFileName(x).Equals(filename));
     }
 }
