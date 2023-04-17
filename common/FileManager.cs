@@ -13,11 +13,7 @@ namespace PgpsUtilsAEFC.common
     /// </summary>
     public class FileManager : AbstractBaseOperations
     {
-        /// <summary>
-        /// The root path of the file system.
-        /// </summary>
-        private string RootPath { get; set; }
-    
+
         /// <summary>
         /// Main constructor for the FileManager class. Sets the root path to the specified value.
         /// If not specified, use the AppData/.PROGRAM-NAME folder.
@@ -28,6 +24,7 @@ namespace PgpsUtilsAEFC.common
             // If the root isn't specified, use the AppData/.PROGRAM-NAME folder.
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             RootPath = OperationsTargetPath = root ?? Path.Combine(appDataPath, $".{Assembly.GetCallingAssembly().GetName().Name}");
+            RootPath = OperationsTargetPath = PathUtils.NormalizePath(RootPath);
             FileUtils.EnsurePath(RootPath, FileAttributes.Directory);
         }
     }

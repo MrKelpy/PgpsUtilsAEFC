@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using PgpsUtilsAEFC.common.abstraction;
+using PgpsUtilsAEFC.utils;
 
 namespace PgpsUtilsAEFC.common
 {
@@ -18,17 +19,23 @@ namespace PgpsUtilsAEFC.common
         /// The section name.
         /// </summary>
         public string Name { get; set; }
+        
+        /// <summary>
+        /// The simplified name of the section. This is the name without the relative path.
+        /// </summary>
+        public string SimpleName => Path.GetFileName(this.Name);
 
         /// <summary>
         /// Main constructor for the Section class. Takes in the root of the file system and the full
         /// path of the section.
         /// </summary>
         /// <param name="sectionPath">The full path of the section.</param>
-        /// <param name="root">The full path of the root</param>
+        /// <param name="root">The full root path of the filesystem</param>
         internal Section(string sectionPath, string root) : base(sectionPath)
         {
-            this.SectionFullPath = sectionPath;
-            this.Name = this.SectionFullPath.Substring(root.Length + 1);
+            this.SectionFullPath = PathUtils.NormalizePath(sectionPath);
+            this.Name = PathUtils.NormalizePath(this.SectionFullPath.Substring(root.Length));
+            this.RootPath = root;
         }
     }
 }

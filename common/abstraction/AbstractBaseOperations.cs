@@ -1,6 +1,7 @@
 ﻿using PgpsUtilsAEFC.utils;
 using System.IO;
 using System.Linq;
+
 // ReSharper disable MemberCanBePrivate.Global
 
 namespace PgpsUtilsAEFC.common.abstraction
@@ -15,6 +16,11 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// The target path to perform these operations on. This will act as the "root" of all operations.
         /// </summary>
         protected string OperationsTargetPath { get; set; }
+        
+        /// <summary>
+        /// The root path of the file system.
+        /// </summary>
+        protected string RootPath { get; set; }
 
         /// <summary>
         /// Main constructor for the AbstractBaseOperations class. Defines the
@@ -33,7 +39,7 @@ namespace PgpsUtilsAEFC.common.abstraction
             if (section == null) return null;
             string sectionPath = Path.Combine(OperationsTargetPath, section);
             FileUtils.EnsurePath(sectionPath, FileAttributes.Directory);
-            return new Section(sectionPath, OperationsTargetPath);
+            return new Section(sectionPath, RootPath);
         }
 
         /// <summary>
@@ -43,7 +49,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         public void RemoveSection(string section)
         {
             if (section == null) return;
-            string sectionPath = Path.Combine(OperationsTargetPath, section);
+            string sectionPath = GetFirstSectionNamed(section).SectionFullPath;
             if (Directory.Exists(sectionPath)) Directory.Delete(sectionPath, true);
         }
 
@@ -54,17 +60,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         public Section[] GetAllSections()
         {
             string[] allSections = Directory.GetDirectories(OperationsTargetPath, "*", SearchOption.AllDirectories);
-            return allSections.ToList().Select(x => new Section(x, OperationsTargetPath)).ToArray();
-        }
-        
-        /// <summary>
-        /// Searches for every top level section in the file system, and returns an array containing them.
-        /// </summary>
-        /// <returns>A Section[] containing the Section objects representing the directories.</returns>
-        public Section[] GetAllTopLevelSections()
-        {
-            string[] allSections = Directory.GetDirectories(OperationsTargetPath);
-            return allSections.ToList().Select(x => new Section(x, OperationsTargetPath)).ToArray();
+            return allSections.ToList().Select(x => new Section(x, RootPath)).ToArray();
         }
 
         /// <summary>
@@ -74,7 +70,8 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// <param name="name">The name of the sections to search for.</param>
         /// <returns>A Section[] containing the objects representing each directory in the file system.</returns>
         public Section[] GetSectionsNamed(string name) =>
-            this.GetAllSections().ToList().Where(x => x.Name == name).ToArray();
+            this.GetAllSections().ToList().Where(x => PathUtils.NormalizePath(x.Name)
+                .EndsWith(PathUtils.NormalizePath(name))).ToArray();
 
         /// <summary>
         /// Gets all the sections (Directories) in the file system, and returns the first one with a matching name.
@@ -82,7 +79,8 @@ namespace PgpsUtilsAEFC.common.abstraction
         /// <param name="name">The name of the sections to search for.</param>
         /// <returns>A Section object representing the directory in the file system.</returns>
         public Section GetFirstSectionNamed(string name) =>
-            this.GetAllSections().ToList().FirstOrDefault(x => x.Name == name);
+            this.GetAllSections().ToList().FirstOrDefault(x => PathUtils.NormalizePath(x.Name)
+                .EndsWith(PathUtils.NormalizePath(name)));
 
         /// <summary>
         /// Adds a document into the current Section if it doesn't exist.
@@ -109,18 +107,11 @@ namespace PgpsUtilsAEFC.common.abstraction
         }
 
         /// <summary>
-        /// Iterates over every item stemming from the relative root used and
-        /// returns an array with their full paths.
+        /// Iterates over every item stemming from the relative root used, filters out the files
+        /// and returns an array with their full paths.
         /// </summary>
         /// <returns>A string[] containing every file stemming down from the root</returns>
         public string[] GetAllFiles() => Directory.GetFiles(OperationsTargetPath, "*.*", SearchOption.AllDirectories);
-
-        /// <summary>
-        /// Iterates over every top level item in the operations target path and
-        /// returns an array with their full paths.
-        /// </summary>
-        /// <returns>A string[] containing every top level file at the target path</returns>
-        public string[] GetAllTopLevelFiles() => Directory.GetFiles(OperationsTargetPath);
 
             /// <summary>
         /// Iterates over all the files stemming from the relative root and returns every name matched file.
