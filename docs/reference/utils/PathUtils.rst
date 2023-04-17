@@ -20,3 +20,15 @@ Method Implementations
 
 :parameters:	* <string> path - The path to normalize
 :returns: The normalized path
+
+---------
+
+.. code-block:: cs
+
+	public static bool EqualsPath(this string path, string path2)
+	
+| Compares two paths, and returns true if they are equal.
+
+:extension parameter:   <string> path - The target path, the one being called through the string
+:parameters:    * <string> path2 - The target to compare the first path with
+:returns: Whether the paths are equal or not

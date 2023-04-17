@@ -22,5 +22,13 @@ namespace PgpsUtilsAEFC.utils
             path = path.Replace(@"/./", @"/");
             return path;
         }
+        
+        /// <summary>
+        /// Compares two paths, and returns true if they are equal.
+        /// </summary>
+        /// <param name="path">The target path, the one being called through the string</param>
+        /// <param name="path2">The target to compare the first path with</param>
+        /// <returns>Whether the paths are equal or not</returns>
+        public static bool EqualsPath(this string path, string path2) => NormalizePath(path).Equals(NormalizePath(path2));
     }
 }
