@@ -49,7 +49,7 @@ namespace PgpsUtilsAEFC.common.abstraction
         public void RemoveSection(string section)
         {
             if (section == null) return;
-            string sectionPath = GetFirstSectionNamed(section).SectionFullPath;
+            string sectionPath = GetFirstSectionNamed(section)?.SectionFullPath;
             if (Directory.Exists(sectionPath)) Directory.Delete(sectionPath, true);
         }
 
